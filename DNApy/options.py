@@ -32,6 +32,7 @@
 
 
 # file to store options!
+# TODO wtf? combine with settings, fonts, variables, etc.
 
 
 class options():

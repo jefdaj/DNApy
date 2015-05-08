@@ -55,21 +55,13 @@ import dna
 from base_class import DNApyBaseClass
 import featurelist_GUI
 import plasmid_GUI
+from settings import *
 
 #TODO
 #fix statusbar in general
 #fix save option
 #fix undo/redo on windows
 
-
-
-
-files={}   #list with all configuration files
-files['default_dir'] = os.path.abspath(os.path.dirname(sys.argv[0]))+"/"
-files['default_dir']=string.replace(files['default_dir'], "\\", "/")
-files['default_dir']=string.replace(files['default_dir'], "library.zip", "")
-settings=files['default_dir']+"settings"   ##path to the file of the global settings
-execfile(settings) #gets all the pre-assigned settings
 
 
 ############# Set up custom stc lexer class ##########################
@@ -766,13 +758,6 @@ class MyApp(wx.App):
 
 
 if __name__ == '__main__': #if script is run by itself and not loaded	
-
-	files={}   #list with all configuration files
-	files['default_dir'] = os.path.abspath(os.path.dirname(sys.argv[0]))+"/"
-	files['default_dir']=string.replace(files['default_dir'], "\\", "/")
-	files['default_dir']=string.replace(files['default_dir'], "library.zip", "")
-	settings=files['default_dir']+"settings"   ##path to the file of the global settings
-	execfile(settings) #gets all the pre-assigned settings
 
 	genbank.dna_selection = (1, 1)	 #variable for storing current DNA selection
 	genbank.feature_selection = False #variable for storing current feature selection

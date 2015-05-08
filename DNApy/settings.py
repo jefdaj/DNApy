@@ -1,5 +1,6 @@
 ## Default filepath ##
-default_filepath = '/home/martin/Work/4_LA/Vectors/'
+default_filepath = '/home/martin/Work/4_LA/Vectors/' # TODO uh, what?
+default_dir = '@out@/lib/python2.7/site-packages/DNApy/'
 
 ## Windowsize ##
 windowsize = (1300, 650)

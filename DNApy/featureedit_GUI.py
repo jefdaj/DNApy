@@ -50,14 +50,8 @@ import copy
 #for asserts and tests
 import types
 from base_class import DNApyBaseClass
+import settings
 
-
-files={}   #list with all configuration files
-files['default_dir'] = os.path.abspath(os.path.dirname(sys.argv[0]))+"/"
-files['default_dir']=string.replace(files['default_dir'], "\\", "/")
-files['default_dir']=string.replace(files['default_dir'], "library.zip", "")
-settings=files['default_dir']+"settings"   ##path to the file of the global settings
-execfile(settings) #gets all the pre-assigned settings
 
 
 
@@ -237,27 +231,27 @@ class FeatureEdit(DNApyBaseClass):
 		self.qualifier_list.InsertColumn(1, "Tag", format=wx.LIST_FORMAT_LEFT, width=250)
 #		self.qualifier_list.Bind(wx.EVT_LISTBOX_DCLICK, self.OnEditQualifier(None))
 
-		imageFile = files['default_dir']+"/icon/new_small.png"
+		imageFile = settings.default_dir+"/icon/new_small.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		addqual = wx.BitmapButton(self, id=7, bitmap=image1, size = (image1.GetWidth()+15, image1.GetHeight()+15), name = "new")
 		self.Bind(wx.EVT_BUTTON, self.OnAddQualifier, id=7)
 
-		imageFile = files['default_dir']+"/icon/remove_small.png"
+		imageFile = settings.default_dir+"/icon/remove_small.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		deletequal = wx.BitmapButton(self, id=8, bitmap=image1, size = (image1.GetWidth()+15, image1.GetHeight()+15), name = "remove")
 		self.Bind(wx.EVT_BUTTON, self.OnRemoveQualifier, id=8)
 
-		imageFile = files['default_dir']+"/icon/move_up.png"
+		imageFile = settings.default_dir+"/icon/move_up.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		qualup = wx.BitmapButton(self, id=9, bitmap=image1, size = (image1.GetWidth()+15, image1.GetHeight()+15), name = "move up")
 		self.Bind(wx.EVT_BUTTON, self.OnMoveQualifierUp, id=9)
 
-		imageFile = files['default_dir']+"/icon/move_down.png"
+		imageFile = settings.default_dir+"/icon/move_down.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		qualdown = wx.BitmapButton(self, id=10, bitmap=image1, size = (image1.GetWidth()+15, image1.GetHeight()+15), name = "move down")
 		self.Bind(wx.EVT_BUTTON, self.OnMoveQualifierDown, id=10)
 
-		imageFile = files['default_dir']+"/icon/edit.png"
+		imageFile = settings.default_dir+"/icon/edit.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		qualedit = wx.BitmapButton(self, id=11, bitmap=image1, size = (image1.GetWidth()+15, image1.GetHeight()+15), name = "edit")
 		self.Bind(wx.EVT_BUTTON, self.OnEditQualifier, id=11)	
@@ -588,13 +582,6 @@ class MyApp(wx.App):
 		return True
 
 if __name__ == '__main__': #if script is run by itself and not loaded	
-
-	files={}   #list with all configuration files
-	files['default_dir'] = os.path.abspath(os.path.dirname(sys.argv[0]))+"/"
-	files['default_dir']=string.replace(files['default_dir'], "\\", "/")
-	files['default_dir']=string.replace(files['default_dir'], "library.zip", "")
-	settings=files['default_dir']+"settings"   ##path to the file of the global settings
-	execfile(settings) #gets all the pre-assigned settings
 
 	genbank.dna_selection = (0, 0)	 #variable for storing current DNA selection
 	genbank.feature_selection = False #variable for storing current feature selection

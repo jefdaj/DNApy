@@ -51,13 +51,7 @@ import colcol
 import genbank
 from base_class import DNApyBaseClass
 import featureedit_GUI
-
-files={}   #list with all configuration files
-files['default_dir'] = os.path.abspath(os.path.dirname(sys.argv[0]))+"/"
-files['default_dir']=string.replace(files['default_dir'], "\\", "/")
-files['default_dir']=string.replace(files['default_dir'], "library.zip", "")
-settings=files['default_dir']+"settings"   ##path to the file of the global settings
-execfile(settings) #gets all the pre-assigned settings
+import settings
 
 
 
@@ -82,23 +76,23 @@ class FeatureList(DNApyBaseClass):
 		
 		#buttons
 		padding = 10 #how much to add around the picture
-		imageFile = files['default_dir']+"/icon/new_small.png"
+		imageFile = settings.default_dir+"/icon/new_small.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		newfeature = wx.BitmapButton(self, id=1, bitmap=image1, size = (image1.GetWidth()+padding, image1.GetHeight()+padding), name = "share")
 
-		imageFile = files['default_dir']+"/icon/remove_small.png"
+		imageFile = settings.default_dir+"/icon/remove_small.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		deletefeature = wx.BitmapButton(self, id=2, bitmap=image1, size = (image1.GetWidth()+padding, image1.GetHeight()+padding), name = "share")
 
-		imageFile = files['default_dir']+"/icon/move_up.png"
+		imageFile = settings.default_dir+"/icon/move_up.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		moveup = wx.BitmapButton(self, id=4, bitmap=image1, size = (image1.GetWidth()+padding, image1.GetHeight()+padding), name = "share")
 
-		imageFile = files['default_dir']+"/icon/move_down.png"
+		imageFile = settings.default_dir+"/icon/move_down.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		movedown = wx.BitmapButton(self, id=5, bitmap=image1, size = (image1.GetWidth()+padding, image1.GetHeight()+padding), name = "share")
 
-		imageFile = files['default_dir']+"/icon/edit.png"
+		imageFile = settings.default_dir+"/icon/edit.png"
 		image1 = wx.Image(imageFile, wx.BITMAP_TYPE_ANY).ConvertToBitmap()
 		edit = wx.BitmapButton(self, id=6, bitmap=image1, size = (image1.GetWidth()+padding, image1.GetHeight()+padding), name = "edit")
 		
@@ -338,13 +332,6 @@ class MyApp(wx.App):
 
 
 if __name__ == '__main__': #if script is run by itself and not loaded	
-
-	files={}   #list with all configuration files
-	files['default_dir'] = os.path.abspath(os.path.dirname(sys.argv[0]))+"/"
-	files['default_dir']=string.replace(files['default_dir'], "\\", "/")
-	files['default_dir']=string.replace(files['default_dir'], "library.zip", "")
-	settings=files['default_dir']+"settings"   ##path to the file of the global settings
-	execfile(settings) #gets all the pre-assigned settings
 
 	genbank.dna_selection = (1, 1)	 #variable for storing current DNA selection
 	genbank.feature_selection = False #variable for storing current feature selection
