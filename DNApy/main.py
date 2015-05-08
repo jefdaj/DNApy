@@ -92,8 +92,8 @@ class DNAedit(DNApyBaseClass):
 		
 		
 
-		splitter1.SplitHorizontally(self.feature_list, self.dnaview, sashPosition=-(windowsize[1]-(windowsize[1]/3.0)))
-		splitter0.SplitVertically(splitter1, self.plasmidview, sashPosition=(windowsize[0]/2.0))	
+		splitter1.SplitHorizontally(self.feature_list, self.dnaview, sashPosition=-(settings.windowsize[1]-(settings.windowsize[1]/3.0)))
+		splitter0.SplitVertically(splitter1, self.plasmidview, sashPosition=(settings.windowsize[0]/2.0))
 
 		sizer = wx.BoxSizer(wx.HORIZONTAL)
 		sizer.Add(item=splitter0, proportion=-1, flag=wx.EXPAND)
@@ -143,7 +143,7 @@ class MyFrame(wx.Frame):
 	
 	
 	def __init__(self, parent, id, title):
-		wx.Frame.__init__(self, parent, id, title, size=windowsize) #size of program
+		wx.Frame.__init__(self, parent, id, title, size=settings.windowsize) #size of program
 		ID=wx.NewId()
 
 		#self.DNApy = wx.Notebook(self, ID, style=0) ######create blank notebook
