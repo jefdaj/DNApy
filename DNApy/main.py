@@ -1265,7 +1265,9 @@ class MyApp(wx.App):
 		return True
 
 
-
-if __name__ == '__main__': #if script is run by itself and not loaded	
+def main():
 	app = MyApp(0)
 	app.MainLoop()
+
+if __name__ == '__main__': #if script is run by itself and not loaded	
+    main()

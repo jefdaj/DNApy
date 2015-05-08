@@ -1,1 +1,1 @@
-from DNApy import main
+from main import main
