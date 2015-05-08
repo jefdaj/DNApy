@@ -47,7 +47,7 @@ import string
 import genbank
 import wx.stc
 
-import pyperclip
+import xclip
 import copy
 
 import output

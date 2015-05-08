@@ -42,7 +42,7 @@
 
 import dna
 import copy
-import pyperclip
+import xclip
 import oligo_localizer
 import peptide_localizer
 import re
@@ -831,7 +831,7 @@ class gbobject(object):
 	def reverse_complement_clipboard(self):	
 		'''Reverse-complements the DNA and all features in clipboard'''
 		self.clipboard['dna'] = dna.RC(self.clipboard['dna']) #change dna sequence
-		pyperclip.copy(self.clipboard['dna'])	
+		xclip.copy(self.clipboard['dna'])
 		for i in range(len(self.clipboard['features'])): #checks self.allgbfeatures to match dna change	
 			if self.clipboard['features'][i]['complement'] == True: 
 				self.clipboard['features'][i]['complement'] = False
@@ -893,7 +893,7 @@ class gbobject(object):
 		assert type(ip) == int, 'The insertion point must be an integer.'
 
 		if DNA == None:
-			system_clip = re.sub(r'\s+', '', pyperclip.paste()) #remove whitespace from item in system clipboard
+			system_clip = re.sub(r'\s+', '', xclip.paste()) #remove whitespace from item in system clipboard
 			if self.clipboard['dna'] != system_clip: #if internal and system clipboard is not same, then system clipboard takes presidence
 				self.clipboard['dna'] = system_clip
 				self.clipboard['features'] = []
@@ -918,7 +918,7 @@ class gbobject(object):
 		'''Copy DNA and all the features for a certain selection'''
 		assert (type(start) == int and type(finish) == int), 'Function requires two integers.'
 		assert start <= finish, 'Startingpoint must be before finish'
-		pyperclip.copy(self.GetDNA(start, finish)) #copy dna to system clipboard (in case I want to paste it somwhere else)
+		xclip.copy(self.GetDNA(start, finish)) #copy dna to system clipboard (in case I want to paste it somwhere else)
 		self.clipboard = {}
 		self.clipboard['dna'] = self.GetDNA(start, finish) #copy to internal clipboard
 		self.clipboard['features'] = []

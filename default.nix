@@ -1,13 +1,14 @@
 with import <nixpkgs> {};
 let dnapy =
 
-{ fetchgit, buildPythonPackage, wxPython }:
+{ fetchgit, buildPythonPackage, wxPython, xclip }:
 
 buildPythonPackage {
   name = "DNApy";
   namePrefix = "";
   src = ./.;
-  propogatedBuildInputs = [ wxPython ];
+  # TODO add xclip to the PATH in result/bin/DNApy
+  propogatedBuildInputs = [ wxPython xclip ];
   pythonPath = [ wxPython ];
   doCheck = false;
 }

@@ -40,7 +40,7 @@ from wx.lib.pubsub import setupkwargs #this line not required in wxPython2.9.
  	                                  #See documentation for more detail
 from wx.lib.pubsub import pub
 
-import pyperclip
+import xclip
 import subprocess
 
 
@@ -511,7 +511,7 @@ class MyFrame(wx.Frame):
 		if control == self.searchinput: #the searchbox
 			start, finish = self.searchinput.GetSelection()
 			if start != -2 and finish != -2: #must be a selection
-				pyperclip.copy(self.searchinput.GetValue()[start:finish])
+				xclip.copy(self.searchinput.GetValue()[start:finish])
 				control.SetValue(self.searchinput.GetValue()[:start]+self.searchinput.GetValue()[finish:])
 
 		elif control == self.DNApy.dnaview.stc: #the main dna window	
@@ -524,7 +524,7 @@ class MyFrame(wx.Frame):
 		'''Check which panel is select and paste accordingly'''
 		control = wx.Window.FindFocus() #which field is selected?
 		if control == self.searchinput: #the searchbox
-			control.SetValue(pyperclip.paste())
+			control.SetValue(xclip.paste())
 
 		elif control == self.DNApy.dnaview.stc: #the main dna window
 			self.DNApy.dnaview.paste()		
@@ -538,7 +538,7 @@ class MyFrame(wx.Frame):
 		if control == self.searchinput: #the searchbox
 			start, finish = self.searchinput.GetSelection()
 			if start != -2 and finish != -2: #must be a selection
-				pyperclip.copy(self.searchinput.GetValue()[start:finish])
+				xclip.copy(self.searchinput.GetValue()[start:finish])
 		elif control == self.DNApy.dnaview.stc: #the main dna window	
 			self.DNApy.dnaview.copy()
 
