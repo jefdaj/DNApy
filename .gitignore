@@ -1,6 +1,11 @@
 *.py[cod~]
 *~
+
+# vim
 *.sw*
+
+# nix
+result
 
 # C extensions
 *.so
